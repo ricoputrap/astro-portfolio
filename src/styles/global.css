@@ -24,16 +24,28 @@
   box-sizing: border-box;
 }
 
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
 body {
-  margin: auto;
-  padding: 28px;
+  display: flex;
+  flex-direction: column;
   padding-bottom: 0;
-  max-width: 1248px;
   font-family: 'Nunito';
   font-size: var(--font-size-body);
   font-weight: 400;
   color: var(--color-element-headline);
   background-color: var(--color-element-background);
+}
+
+main {
+  padding: 28px;
+  max-width: 1248px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
 }
 
 h1 {
@@ -77,11 +89,7 @@ h1, h2, h3, h4, h5, p.small {
 }
 
 footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-
-  background: #010101;
+  background: var(--color-content-stroke);
   padding: 16px;
   width: 100%;
 }

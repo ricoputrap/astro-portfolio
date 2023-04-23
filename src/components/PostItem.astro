@@ -1,0 +1,55 @@
+---
+interface Props {
+  title: string;
+  date: string;
+  description: string;
+  slug: string;
+}
+
+const { props } = Astro;
+---
+
+<div class="post-item">
+  <h6 class="title">{ props.title }</h6>
+  <div class="date">
+    <img src="icons/icon-calendar.svg" alt="icon-calendar" />
+    <span>{ props.date }</span>
+  </div>
+  <p class="description">{ props.description }</p>
+</div>
+
+<style>
+  .post-item {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+  }
+
+  h6.title {
+    font-size: var(--font-size-body);
+    font-weight: 700;
+    margin: 0;
+    color: var(--color-content-tertiary);
+  }
+
+  .date {
+    display: flex;
+    align-items: center;
+    column-gap: 4px;
+    font-size: 14px;
+    font-weight: 400;
+    font-style: italic;
+    margin: 0;
+    color: var(--color-content-secondary);
+  }
+  .date span {
+    height: 18px;
+  }
+
+  p.description {
+    font-size: var(--font-size-small);
+    font-weight: 400;
+    margin: 0;
+    color: var(--color-element-paragraph);
+  }
+</style>
