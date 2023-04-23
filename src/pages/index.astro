@@ -1,20 +1,21 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar.astro';
 ---
 
 <Layout title="ricoputra">
 	<main>
-		<div id="hero">
+		<div class="hero">
 			<div class="description">
 				<h1>Hi there, I'm <span class="color-highlight">RICO</span></h1>
-				<p>I am a <span>Fullstack Web Developer</span> with <span>3 years</span> of experiences.</p>
-				<p>
-					<span class="color-secondary bold">React</span> + <span class="color-secondary bold">Express</span> + <span class="color-secondary bold">TypeScript</span>
-					are my main tools to develop <span class="color-secondary bold">solutions</span> for your needs & problems.
-					I also use <span class="color-secondary bold">Notions</span>, <span class="color-secondary bold">Figma</span>, and <span class="color-secondary bold">Diagrams.net</span>
-					to help me doing <span class="color-secondary bold">Analysis & Design</span>.
-				</p>
+				<div>
+					<p>I am a <span>Fullstack Web Developer</span> with <span>3 years</span> of experiences.</p>
+					<p>
+						<span class="color-secondary bold">React</span> + <span class="color-secondary bold">Express</span> + <span class="color-secondary bold">TypeScript</span>
+						are my main tools to develop <span class="color-secondary bold">solutions</span> for your needs & problems.
+						I also use <span class="color-secondary bold">Notions</span>, <span class="color-secondary bold">Figma</span>, and <span class="color-secondary bold">Diagrams.net</span>
+						to help me doing <span class="color-secondary bold">Analysis & Design</span>.
+					</p>
+				</div>
 			</div>
 
 			<div class="illustration">
@@ -25,20 +26,57 @@ import Navbar from '../components/Navbar.astro';
 </Layout>
 
 <style>
-	#hero {
+	.hero {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		margin-top: 80px;
 	}
 
+	p {
+		margin: 0;
+	}
+
 	.description {
 		max-width: 634px;
 		line-height: 32px;
+		display: flex;
+		flex-direction: column;
+		row-gap: 20px;
 	}
 	.illustration {
 		width: 500px;
 		display: flex;
 		justify-content: center;
+	}
+	.illustration img {
+		width: 359px;
+		height: 400px;
+	}
+
+	@media screen and (max-width: 1024px) {
+		.hero {
+			flex-wrap: wrap;
+			justify-content: center;
+			text-align: center;
+		}
+
+		
+
+		.illustration {
+			display: none;
+		}
+	}
+
+	@media screen and (max-width: 640px) {
+		h1 {
+			font-size: var(--font-size-h2);
+		}
+	}
+
+	@media screen and (max-width: 480px) {
+		h1 {
+			font-size: var(--font-size-h3);
+		}
 	}
 </style>
