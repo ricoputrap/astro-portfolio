@@ -1,0 +1,37 @@
+---
+import { formatDate } from "../utils/date";
+import BlogLayout from "./BlogLayout.astro";
+import Layout from "./Layout.astro";
+
+const { frontmatter } = Astro.props;
+const { title, date, author } = frontmatter;
+const formattedDate = formatDate(date);
+---
+
+<Layout title={ frontmatter.title }>
+  <BlogLayout>
+    <div class="post-header">
+      <h3 class="color-tertiary">{ title }</h3>
+      <div class="color-secondary">
+        <small>by { author }</small> -
+        <small>{ formattedDate }</small>
+      </div>
+    </div>
+
+    <div class="content">
+      <slot />
+    </div>
+  </BlogLayout>
+</Layout>
+
+<style>
+  .post-header {
+    text-align: center;
+  }
+  .post-header small {
+    font-style: italic;
+  }
+  .md-p {
+    color: var(--color-element-paragraph);
+  }
+</style>

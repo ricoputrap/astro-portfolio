@@ -76,12 +76,13 @@ h5 {
 p {
   font-size: var(--font-size-body);
   font-weight: 400;
-  color: var(--color-element-headline);
+  color: var(--color-element-paragraph);
+  line-height: 32px;
 }
 p.small {
   font-size: var(--font-size-small);
   font-weight: 400;
-  color: var(--color-element-headline);
+  color: var(--color-element-paragraph);
 }
 
 h1, h2, h3, h4, h5, p.small {

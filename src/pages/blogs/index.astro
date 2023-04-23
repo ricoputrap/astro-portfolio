@@ -1,0 +1,36 @@
+---
+import PostItem from '../../components/PostItem.astro';
+import BlogLayout from '../../layouts/BlogLayout.astro';
+import Layout from '../../layouts/Layout.astro';
+import { posts } from './data';
+---
+
+<Layout title="ricoputra - BLOGS">
+	<BlogLayout>
+		<h2>POSTS</h2>
+
+		<div class="posts">
+			{posts.map(post => (
+				<PostItem
+					title={ post.title }
+					date={ post.date }
+					author={ post.author }
+					slug={ post.slug }
+					description={ post.description }
+				/>
+			))}
+		</div>
+	</BlogLayout>
+</Layout>
+
+<style>
+h2 {
+	text-align: center;
+}
+.posts {
+	display: flex;
+	flex-direction: column;
+	row-gap: 32px;
+	margin-top: 40px;
+}
+</style>
