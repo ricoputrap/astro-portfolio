@@ -1,0 +1,82 @@
+:root {
+  --color-element-background: #16161a;
+  --color-element-button: #7f5af0;
+  --color-element-headline: #fffffe;
+  --color-element-button-text: #fffffe;
+  --color-element-paragraph: #94a1b2;
+
+  --color-content-stroke: #010101;
+  --color-content-main: #fffffe;
+  --color-content-secondary: #72757e;
+  --color-content-tertiary: #2cb67d;
+  --color-content-highlight: #7f5af0;
+
+  --font-size-h1: 56px;
+  --font-size-h2: 48px;
+  --font-size-h3: 40px;
+  --font-size-h4: 32px;
+  --font-size-h5: 24px;
+  --font-size-body: 20px;
+  --font-size-small: 18px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: auto;
+  padding: 28px;
+  max-width: 1248px;
+  font-family: 'Nunito';
+  font-size: var(--font-size-body);
+  font-weight: 400;
+  color: var(--color-element-headline);
+  background-color: var(--color-element-background);
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+  font-weight: 700;
+  color: var(--color-element-headline);
+}
+h2 {
+  font-size: var(--font-size-h2);
+  font-weight: 700;
+  color: var(--color-element-headline);
+}
+h3 {
+  font-size: var(--font-size-h3);
+  font-weight: 700;
+  color: var(--color-element-headline);
+}
+h4 {
+  font-size: var(--font-size-h4);
+  font-weight: 700;
+  color: var(--color-element-headline);
+}
+h5 {
+  font-size: var(--font-size-h5);
+  font-weight: 700;
+  color: var(--color-element-headline);
+}
+p {
+  font-size: var(--font-size-body);
+  font-weight: 400;
+  color: var(--color-element-headline);
+}
+p.small {
+  font-size: var(--font-size-small);
+  font-weight: 400;
+  color: var(--color-element-headline);
+}
+
+h1, h2, h3, h4, h5, p.small {
+  margin: 0;
+}
+
+.color-main { color: var(--color-content-main); }
+.color-highlight { color: var(--color-content-highlight); }
+.color-secondary { color: var(--color-content-secondary); }
+
+.bold { font-weight: 700; }
