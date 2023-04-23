@@ -1,0 +1,66 @@
+---
+interface CTAItem {
+	img: string;
+	alt: string;
+	url: string;
+}
+
+export const CTAs: CTAItem[] = [
+	{
+		img: "logo/mdi_linkedin.svg",
+		alt: "logo-linkedin",
+		url: "https://www.linkedin.com/in/ricoputrap/"
+	},
+	{
+		img: "logo/mdi_twitter.svg",
+		alt: "logo-twitter",
+		url: "https://twitter.com/rico_rpp21"
+	},
+	{
+		img: "logo/icon_njb.svg",
+		alt: "logo-njb",
+		url: "https://www.nihbuatjajan.com/ricoputrap"
+	},
+	{
+		img: "logo/mdi_github.svg",
+		alt: "logo-github",
+		url: "https://github.com/ricoputrap"
+	}
+];
+---
+
+<div class="cta">
+  {CTAs.map(item => (
+    <a href={ item.url } target="_blank">
+      <div class="cta-item">
+        <img src={ item.img } alt={ item.alt } />
+      </div>
+    </a>
+  ))}
+</div>
+
+<style>
+  .cta {
+		display: flex;
+		column-gap: 15px;
+		flex-direction: row;
+		align-items: center;
+	}
+	.cta-item {
+		padding: 2px;
+		background: var(--color-content-main);
+		border-radius: 5px;
+		width: 36px;
+		height: 36px;
+	}
+	.cta-item img {
+		width: 32px;
+		height: 32px;
+	}
+
+  @media screen and (max-width: 1024px) {
+    .cta {
+      justify-content: center;
+    }
+  }
+</style>

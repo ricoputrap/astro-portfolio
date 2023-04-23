@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import CTAs from '../components/CTAs.astro';
 ---
 
 <Layout title="ricoputra">
@@ -16,6 +17,9 @@ import Layout from '../layouts/Layout.astro';
 						to help me doing <span class="color-tertiary bold">Analysis & Design</span>.
 					</p>
 				</div>
+				
+				<!-- CTAs -->
+				<CTAs />
 			</div>
 
 			<div class="illustration">
@@ -44,6 +48,8 @@ import Layout from '../layouts/Layout.astro';
 		flex-direction: column;
 		row-gap: 20px;
 	}
+
+
 	.illustration {
 		width: 500px;
 		display: flex;
@@ -53,7 +59,6 @@ import Layout from '../layouts/Layout.astro';
 		width: 359px;
 		height: 400px;
 	}
-
 	@media screen and (max-width: 1024px) {
 		.hero {
 			flex-wrap: wrap;
