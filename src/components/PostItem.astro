@@ -13,16 +13,17 @@ const { props } = Astro;
 <div class="post-item">
   <a href={`blogs/${props.slug}`}>
     <h6 class="title">{ props.title }</h6>
-    <div class="date">
-      <img src="icons/icon-calendar.svg" alt="icon-calendar" />
-      <div>{ props.date } by <strong>{ props.author }</strong></div>
-    </div>
-    <p class="description">{ props.description }</p>
   </a>
+  
+  <div class="date">
+    <img src="icons/icon-calendar.svg" alt="icon-calendar" />
+    <div>{ props.date } by <strong>{ props.author }</strong></div>
+  </div>
+  <p class="description">{ props.description }</p>
 </div>
 
 <style>
-  .post-item a {
+  .post-item {
     display: flex;
     flex-direction: column;
     row-gap: 8px;
