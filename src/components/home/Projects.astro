@@ -34,12 +34,11 @@ import { projects } from "../../data/projects.json";
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    justify-content: center;
   }
   .card {
     background: var(--color-background-primary);
     padding: 20px;
-    width: 32%;
+    width: 384px;
 
     border-radius: 20px;
     border-width: 4px;
@@ -81,5 +80,11 @@ import { projects } from "../../data/projects.json";
     height: 120px;
     background-color: var(--color-text-secondary);
     border-radius: 5px;
+  }
+
+  @media screen and (max-width: 854px) {
+    .projects {
+      justify-content: center;
+    }
   }
 </style>
