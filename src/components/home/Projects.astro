@@ -1,5 +1,7 @@
 ---
 import HomeSection from "../../layouts/HomeSection.astro";
+import { projects } from "../../data/projects.json";
+
 ---
 
 <HomeSection
@@ -8,5 +10,76 @@ import HomeSection from "../../layouts/HomeSection.astro";
   buttonLabel="see all projects"
   buttonLink="/projects"
 >
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt modi illo tempore ex harum dicta pariatur doloribus dolorum, odio quo error a culpa? Fugit a laboriosam recusandae eaque nemo nam.</p>
+  <div class="projects">
+    {projects.map(project => (
+      <div class="card">
+        <div class="content">
+          <h5>{project.name}</h5>
+  
+          <div class="tools">
+            {project.tools.map(tool => (
+              <span class="tool">{ tool }</span>
+            ))}
+          </div>
+  
+          <img src={project.cover} alt={ project.name} />
+        </div>
+      </div>
+    ))}
+  </div>
 </HomeSection>
+
+<style>
+  .projects {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  .card {
+    background: var(--color-background-primary);
+    padding: 20px;
+    width: 32%;
+
+    border-radius: 20px;
+    border-width: 4px;
+    border-color: var(--color-border-primary);
+    border-style: solid;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+  }
+
+  h5 {
+    color: var(--color-text-brand);
+  }
+
+  .tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .tool {
+    background: var(--color-background-primary);
+    padding: 2px 5px;
+
+    border-radius: 10px;
+    border-color: var(--color-border-primary);
+    border-width: 1px;
+    border-style: solid;
+
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--color-text-secondary);
+  }
+
+  .content img {
+    height: 120px;
+    background-color: var(--color-text-secondary);
+    border-radius: 5px;
+  }
+</style>
