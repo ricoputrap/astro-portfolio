@@ -1,0 +1,55 @@
+---
+export interface Props {
+  id: string;
+	title: string;
+  buttonLabel: string;
+  buttonLink: string;
+}
+
+const { id, title, buttonLabel, buttonLink } = Astro.props;
+---
+<section id={ id }>
+  <div class="content">
+    <h4>{ title }</h4>
+    <slot />
+
+    <a class="btn-link" href={ buttonLink }>
+      { buttonLabel }
+
+      <img src="icons/arrow-forward.svg" alt="arrow-forward" />
+    </a>
+  </div>
+</section>
+
+<style>
+  section {
+    padding: 40px 0;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+  }
+
+  a.btn-link {
+    background-color: var(--color-background-primary);
+    color: var(--color-text-white);
+    padding: 10px 16px;
+    width: fit-content;
+
+    text-decoration: none;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+
+    border-radius: 10px;
+    border-color: var(--color-border-primary);
+    border-style: solid;
+    border-width: 2px;
+
+    display: flex;
+    align-items: center;
+    column-gap: 4px;
+  }
+</style>

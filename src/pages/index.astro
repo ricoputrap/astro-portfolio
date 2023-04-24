@@ -1,6 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import CTAs from '../components/CTAs.astro';
+import Projects from "../components/home/Projects.astro";
+import Posts from "../components/home/Posts.astro";
+import Docs from "../components/home/Docs.astro";
+
+import projects from "../data/projects.json";
+
+console.log("===== projects:", projects);
+
 ---
 
 <Layout title="ricoputra">
@@ -25,6 +33,10 @@ import CTAs from '../components/CTAs.astro';
 			<img src="illustration.svg" alt="Rico Putra" />
 		</div>
 	</div>
+
+	<Projects />
+	<Posts />
+	<Docs />
 </Layout>
 
 <style>
@@ -33,6 +45,7 @@ import CTAs from '../components/CTAs.astro';
 		justify-content: space-between;
 		align-items: center;
 		margin-top: 80px;
+		margin-bottom: 80px;
 	}
 
 	p {
