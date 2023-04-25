@@ -1,0 +1,16 @@
+---
+import HomeSection from "../../layouts/HomeSection.astro";
+import { projects } from "../../data/projects.json";
+import Projects from "../Projects.astro";
+
+const data = projects.slice(0, 3);
+---
+
+<HomeSection
+  id="projects"
+  title="Projects"
+  buttonLabel="see all projects"
+  buttonLink="/projects"
+>
+  <Projects data={ data } />
+</HomeSection>

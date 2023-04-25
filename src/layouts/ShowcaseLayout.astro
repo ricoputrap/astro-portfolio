@@ -1,0 +1,28 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<section>
+  <h4>{ title }</h4>
+  <slot />
+</section>
+
+<style>
+  section {
+    padding-top: 40px;
+  }
+
+  section h4 {
+    margin-bottom: 20px;
+  }
+
+  @media screen and (max-width: 854px) {
+    section h4 {
+      text-align: center;
+    }
+  }
+</style>
