@@ -1,0 +1,87 @@
+---
+import Card from './Card.astro';
+
+interface Props {
+  name: string;
+  tools: string[];
+  cover: string;
+  url: string;
+}
+
+const {
+  props: { name, tools, cover, url }
+} = Astro;
+---
+
+<div class="project">
+  <Card>
+    <div class="project__content">
+      <a href={ url } target="_blank">
+        <h5>{ name }</h5>
+      </a>
+  
+      <div class="project__tools">
+        {tools.map(tool => (
+          <span class="project__tools__tool">{ tool }</span>
+        ))}
+      </div>
+  
+      <div class="project__cover">
+        <img src={ cover } alt={ name } />
+      </div>
+    </div>
+  </Card>
+</div>
+
+<style>
+  .project__content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+  }
+  .project__content a {
+    text-decoration: none;
+  }
+
+  h5 {
+    color: var(--color-text-brand);
+  }
+
+  .project__tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .project__tools__tool {
+    background: var(--color-background-primary);
+    padding: 2px 5px;
+
+    border-radius: 10px;
+    border-color: var(--color-border-primary);
+    border-width: 1px;
+    border-style: solid;
+
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--color-text-secondary);
+  }
+
+  .project__cover {
+    height: 120px;
+    background-color: var(--color-text-secondary);
+    border-radius: 5px;
+    
+    text-align: center;
+    overflow: hidden;
+
+    position: relative;
+  }
+  .project__cover:hover {
+    cursor: pointer;
+  }
+  .project__content img:hover {
+    transition: transform 0.3s ease-in-out;
+    transform: scale(1.2);
+  }
+</style>

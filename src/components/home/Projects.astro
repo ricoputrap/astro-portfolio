@@ -1,7 +1,7 @@
 ---
 import HomeSection from "../../layouts/HomeSection.astro";
 import { projects } from "../../data/projects.json";
-import Card from "../Card.astro";
+import ProjectItem from "../ProjectItem.astro";
 
 ---
 
@@ -13,23 +13,12 @@ import Card from "../Card.astro";
 >
   <div class="projects">
     {projects.map(project => (
-      <Card>
-        <div class="content">
-          <a href={ project.url } target="_blank">
-            <h5>{project.name}</h5>
-          </a>
-  
-          <div class="tools">
-            {project.tools.map(tool => (
-              <span class="tool">{ tool }</span>
-            ))}
-          </div>
-  
-          <div class="cover">
-            <img src={ project.cover } alt={ project.name } />
-          </div>
-        </div>
-      </Card>
+      <ProjectItem
+        name={ project.name }
+        tools={ project.tools }
+        url={ project.url }
+        cover={ project.cover }
+      />
     ))}
   </div>
 </HomeSection>
@@ -40,58 +29,6 @@ import Card from "../Card.astro";
     flex-wrap: wrap;
     gap: 20px;
   }
-
-  .content {
-    display: flex;
-    flex-direction: column;
-    row-gap: 8px;
-  }
-  .content a {
-    text-decoration: none;
-  }
-
-  h5 {
-    color: var(--color-text-brand);
-  }
-
-  .tools {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px;
-  }
-
-  .tool {
-    background: var(--color-background-primary);
-    padding: 2px 5px;
-
-    border-radius: 10px;
-    border-color: var(--color-border-primary);
-    border-width: 1px;
-    border-style: solid;
-
-    font-size: 14px;
-    font-weight: 400;
-    color: var(--color-text-secondary);
-  }
-
-  .content .cover {
-    height: 120px;
-    background-color: var(--color-text-secondary);
-    border-radius: 5px;
-    
-    text-align: center;
-    overflow: hidden;
-
-    position: relative;
-  }
-  .content .cover:hover {
-    cursor: pointer;
-  }
-  .content img:hover {
-    transition: transform 0.3s ease-in-out;
-    transform: scale(1.2);
-  }
-
   @media screen and (max-width: 854px) {
     .projects {
       justify-content: center;
