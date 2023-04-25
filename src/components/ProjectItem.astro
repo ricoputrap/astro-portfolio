@@ -1,5 +1,6 @@
 ---
 import Card from './Card.astro';
+import Tags from './Tags.astro';
 
 interface Props {
   name: string;
@@ -17,12 +18,8 @@ const { name, tools, cover, url } = Astro.props;
       <a href={ url } target="_blank">
         <h5>{ name }</h5>
       </a>
-  
-      <div class="project__tools">
-        {tools.map(tool => (
-          <span class="project__tools__tool">{ tool }</span>
-        ))}
-      </div>
+
+      <Tags tags={ tools } />
   
       <div class="project__cover">
         <img src={ cover } alt={ name } />
@@ -43,26 +40,6 @@ const { name, tools, cover, url } = Astro.props;
 
   h5 {
     color: var(--color-text-brand);
-  }
-
-  .project__tools {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px;
-  }
-
-  .project__tools__tool {
-    background: var(--color-background-primary);
-    padding: 2px 5px;
-
-    border-radius: 10px;
-    border-color: var(--color-border-primary);
-    border-width: 1px;
-    border-style: solid;
-
-    font-size: 14px;
-    font-weight: 400;
-    color: var(--color-text-secondary);
   }
 
   .project__cover {
