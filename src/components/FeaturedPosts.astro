@@ -1,6 +1,7 @@
 ---
 import type { Post } from '../types/index.types';
 import Card from './Card.astro';
+import PostItem from './PostItem.astro';
 import Tags from './Tags.astro';
 
 interface Props {
@@ -25,27 +26,22 @@ const { mainPost, posts } = Astro.props;
     </Card>
   </div>
 
-  <div class="secondary">
-    <Card fitContent>
-      <div class="content">
-        <h5 class="title">{ posts[0].title }</h5>
-        <p class="date">{ posts[0].date } by <strong>{ posts[0].author }</strong></p>
-        <p class="description">{ posts[0].description }</p>
-        <Tags tags={ posts[0].tags } />
-      </div>
-    </Card>
-  </div>
-
-  <div class="secondary">
-    <Card fitContent>
-      <div class="content">
-        <h5 class="title">{ posts[1].title }</h5>
-        <p class="date">{ posts[1].date } by <strong>{ posts[1].author }</strong></p>
-        <p class="description">{ posts[1].description }</p>
-        <Tags tags={ posts[1].tags } />
-      </div>
-    </Card>
-  </div>
+  <PostItem
+    title={ posts[0].title }
+    date={ posts[0].date }
+    author={ posts[0].author }
+    description={ posts[0].description }
+    tags={ posts[0].tags }
+    slug={ posts[0].slug }
+  />
+  <PostItem
+    title={ posts[1].title }
+    date={ posts[1].date }
+    author={ posts[1].author }
+    description={ posts[1].description }
+    tags={ posts[1].tags }
+    slug={ posts[1].slug }
+  />
 </div>
 
 <style>

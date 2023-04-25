@@ -14,4 +14,5 @@ export interface Post {
   description: string;
   tags: string[];
   cover?: string;
+  slug: string;
 }
