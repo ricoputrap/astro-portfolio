@@ -1,0 +1,96 @@
+---
+import type { Post } from '../types/index.types';
+import Card from './Card.astro';
+
+interface Props {
+  mainPost: Post;
+  posts: Post[];
+}
+
+const { mainPost, posts } = Astro.props;
+---
+
+<div class="featured-posts">
+  <div class="main">
+    <Card fitContent heightMax>
+      <img src={ mainPost.cover } alt={ mainPost.title } />
+
+      <div class="content">
+        <h5 class="title">{ mainPost.title }</h5>
+        <p class="date">{ mainPost.date } by <strong>{ mainPost.author }</strong></p>
+        <p class="description">{ mainPost.description }</p>
+      </div>
+    </Card>
+  </div>
+
+  <div class="secondary">
+    <Card fitContent>
+      <div class="content">
+        <h5 class="title">{ posts[0].title }</h5>
+        <p class="date">{ posts[0].date }</p>
+        <p class="description">{ posts[0].description }</p>
+      </div>
+    </Card>
+  </div>
+
+  <div class="secondary">
+    <Card fitContent>
+      <div class="content">
+        <h5 class="title">{ posts[1].title }</h5>
+        <p class="date">{ posts[1].date }</p>
+        <p class="description">{ posts[1].description }</p>
+      </div>
+    </Card>
+  </div>
+</div>
+
+<style>
+  p {
+    margin: 0;
+  }
+
+  .featured-posts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .main {
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 2;
+
+    display: flex;
+    flex-direction: column;
+    column-gap: 20px;
+  }
+  .main img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+  }
+
+  .secondary {
+    grid-column-start: 3
+    grid-row-start: 2;
+  }
+
+  .title {
+    color: var(--color-text-brand);
+  }
+  .date {
+    font-size: 14px;
+    font-style: italic;
+    color: var(--color-text-secondary);
+    line-height: 20px;
+  }
+  .description {
+    font-size: 14px;
+    line-height: 24px;
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+  }
+</style>
