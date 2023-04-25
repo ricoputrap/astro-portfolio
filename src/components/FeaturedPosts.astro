@@ -26,22 +26,24 @@ const { mainPost, posts } = Astro.props;
     </Card>
   </div>
 
-  <PostItem
-    title={ posts[0].title }
-    date={ posts[0].date }
-    author={ posts[0].author }
-    description={ posts[0].description }
-    tags={ posts[0].tags }
-    slug={ posts[0].slug }
-  />
-  <PostItem
-    title={ posts[1].title }
-    date={ posts[1].date }
-    author={ posts[1].author }
-    description={ posts[1].description }
-    tags={ posts[1].tags }
-    slug={ posts[1].slug }
-  />
+  <div class="posts">
+    <PostItem
+      title={ posts[0].title }
+      date={ posts[0].date }
+      author={ posts[0].author }
+      description={ posts[0].description }
+      tags={ posts[0].tags }
+      slug={ posts[0].slug }
+    />
+    <PostItem
+      title={ posts[1].title }
+      date={ posts[1].date }
+      author={ posts[1].author }
+      description={ posts[1].description }
+      tags={ posts[1].tags }
+      slug={ posts[1].slug }
+    />
+  </div>
 </div>
 
 <style>
@@ -63,6 +65,14 @@ const { mainPost, posts } = Astro.props;
     display: flex;
     flex-direction: column;
     column-gap: 20px;
+  }
+  .posts {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+
+    grid-column-start: 3;
+    grid-row: 1 / span 2;
   }
   .main img {
     width: 100%;
@@ -92,5 +102,24 @@ const { mainPost, posts } = Astro.props;
     display: flex;
     flex-direction: column;
     row-gap: 8px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .featured-posts {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(4, 1fr);
+    }
+    .main {
+      grid-column: 1;
+      grid-row: 1 / span 2;
+    }
+    .posts {
+      grid-column: 1;
+      grid-row: 3 / span 2;
+    }
+    .secondary {
+      grid-column: 1;
+      grid-row: 2;
+    }
   }
 </style>
