@@ -1,6 +1,7 @@
 ---
 import HomeSection from "../../layouts/HomeSection.astro";
 import { projects } from "../../data/projects.json";
+import Card from "../Card.astro";
 
 ---
 
@@ -12,9 +13,11 @@ import { projects } from "../../data/projects.json";
 >
   <div class="projects">
     {projects.map(project => (
-      <div class="card">
+      <Card>
         <div class="content">
-          <h5>{project.name}</h5>
+          <a href={ project.url } target="_blank">
+            <h5>{project.name}</h5>
+          </a>
   
           <div class="tools">
             {project.tools.map(tool => (
@@ -22,9 +25,11 @@ import { projects } from "../../data/projects.json";
             ))}
           </div>
   
-          <img src={project.cover} alt={ project.name} />
+          <div class="cover">
+            <img src={ project.cover } alt={ project.name } />
+          </div>
         </div>
-      </div>
+      </Card>
     ))}
   </div>
 </HomeSection>
@@ -35,21 +40,14 @@ import { projects } from "../../data/projects.json";
     flex-wrap: wrap;
     gap: 20px;
   }
-  .card {
-    background: var(--color-background-primary);
-    padding: 20px;
-    width: 384px;
-
-    border-radius: 20px;
-    border-width: 4px;
-    border-color: var(--color-border-primary);
-    border-style: solid;
-  }
 
   .content {
     display: flex;
     flex-direction: column;
     row-gap: 8px;
+  }
+  .content a {
+    text-decoration: none;
   }
 
   h5 {
@@ -76,10 +74,22 @@ import { projects } from "../../data/projects.json";
     color: var(--color-text-secondary);
   }
 
-  .content img {
+  .content .cover {
     height: 120px;
     background-color: var(--color-text-secondary);
     border-radius: 5px;
+    
+    text-align: center;
+    overflow: hidden;
+
+    position: relative;
+  }
+  .content .cover:hover {
+    cursor: pointer;
+  }
+  .content img:hover {
+    transition: transform 0.3s ease-in-out;
+    transform: scale(1.2);
   }
 
   @media screen and (max-width: 854px) {
