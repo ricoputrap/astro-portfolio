@@ -8,9 +8,7 @@ interface Props {
   url: string;
 }
 
-const {
-  props: { name, tools, cover, url }
-} = Astro;
+const { name, tools, cover, url } = Astro.props;
 ---
 
 <div class="project">
