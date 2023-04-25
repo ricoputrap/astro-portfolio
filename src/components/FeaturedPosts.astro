@@ -27,7 +27,7 @@ const { mainPost, posts } = Astro.props;
     <Card fitContent>
       <div class="content">
         <h5 class="title">{ posts[0].title }</h5>
-        <p class="date">{ posts[0].date }</p>
+        <p class="date">{ posts[0].date } by <strong>{ posts[0].author }</strong></p>
         <p class="description">{ posts[0].description }</p>
       </div>
     </Card>
@@ -37,7 +37,7 @@ const { mainPost, posts } = Astro.props;
     <Card fitContent>
       <div class="content">
         <h5 class="title">{ posts[1].title }</h5>
-        <p class="date">{ posts[1].date }</p>
+        <p class="date">{ posts[1].date } by <strong>{ posts[1].author }</strong></p>
         <p class="description">{ posts[1].description }</p>
       </div>
     </Card>
