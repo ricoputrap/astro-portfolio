@@ -1,4 +1,12 @@
-<div class="card">
+---
+interface Props {
+  fitContent?: boolean;
+}
+
+const width = Astro.props.fitContent ? 'fit-content' : '384px';
+---
+
+<div class="card" style={`width: ${width};`}>
   <slot />
 </div>
 
@@ -6,7 +14,6 @@
   .card {
     background: var(--color-background-primary);
     padding: 20px;
-    width: 384px;
 
     border-radius: 20px;
     border-width: 4px;
