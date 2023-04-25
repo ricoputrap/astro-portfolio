@@ -1,6 +1,7 @@
 ---
 import type { Post } from '../types/index.types';
 import Card from './Card.astro';
+import Tags from './Tags.astro';
 
 interface Props {
   mainPost: Post;
@@ -19,6 +20,7 @@ const { mainPost, posts } = Astro.props;
         <h5 class="title">{ mainPost.title }</h5>
         <p class="date">{ mainPost.date } by <strong>{ mainPost.author }</strong></p>
         <p class="description">{ mainPost.description }</p>
+        <Tags tags={ mainPost.tags } />
       </div>
     </Card>
   </div>
@@ -29,6 +31,7 @@ const { mainPost, posts } = Astro.props;
         <h5 class="title">{ posts[0].title }</h5>
         <p class="date">{ posts[0].date } by <strong>{ posts[0].author }</strong></p>
         <p class="description">{ posts[0].description }</p>
+        <Tags tags={ posts[0].tags } />
       </div>
     </Card>
   </div>
@@ -39,6 +42,7 @@ const { mainPost, posts } = Astro.props;
         <h5 class="title">{ posts[1].title }</h5>
         <p class="date">{ posts[1].date } by <strong>{ posts[1].author }</strong></p>
         <p class="description">{ posts[1].description }</p>
+        <Tags tags={ posts[1].tags } />
       </div>
     </Card>
   </div>
