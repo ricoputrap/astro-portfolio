@@ -14,14 +14,16 @@ const { mainPost, posts } = Astro.props;
 
 <div class="featured-posts">
   <div class="main">
-    <Card fitContent heightMax>
-      <img src={ mainPost.cover } alt={ mainPost.title } />
+    <Card>
+      <div class="container">
+        <img src={ mainPost.cover } alt={ mainPost.title } />
 
-      <div class="content">
-        <h5 class="title">{ mainPost.title }</h5>
-        <p class="date">{ mainPost.date } by <strong>{ mainPost.author }</strong></p>
-        <p class="description">{ mainPost.description }</p>
-        <Tags tags={ mainPost.tags } />
+        <div class="content">
+          <h5 class="title">{ mainPost.title }</h5>
+          <p class="date">{ mainPost.date } by <strong>{ mainPost.author }</strong></p>
+          <p class="description">{ mainPost.description }</p>
+          <Tags tags={ mainPost.tags } />
+        </div>
       </div>
     </Card>
   </div>
@@ -61,11 +63,15 @@ const { mainPost, posts } = Astro.props;
   .main {
     grid-column: 1 / span 2;
     grid-row: 1 / span 2;
-
+  }
+  .main .container {
     display: flex;
     flex-direction: column;
-    column-gap: 20px;
+    row-gap: 20px;
+    padding: 20px;
+    padding-bottom: unset;
   }
+
   .posts {
     display: flex;
     flex-direction: column;
@@ -78,11 +84,7 @@ const { mainPost, posts } = Astro.props;
     width: 100%;
     height: 240px;
     object-fit: cover;
-  }
-
-  .secondary {
-    grid-column-start: 3
-    grid-row-start: 2;
+    border-radius: 10px;
   }
 
   .title {
@@ -104,22 +106,25 @@ const { mainPost, posts } = Astro.props;
     row-gap: 8px;
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1024px) {
     .featured-posts {
-      grid-template-columns: 1fr;
-      grid-template-rows: repeat(4, 1fr);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     .main {
       grid-column: 1;
-      grid-row: 1 / span 2;
+      grid-row: 1;
+      max-width: 500px;
+      height: fit-content;
+    }
+    .main .container {
+      padding: 20px;
     }
     .posts {
       grid-column: 1;
-      grid-row: 3 / span 2;
-    }
-    .secondary {
-      grid-column: 1;
       grid-row: 2;
+      max-width: 500px;
     }
   }
 </style>
