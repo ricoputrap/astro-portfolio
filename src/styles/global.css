@@ -51,6 +51,7 @@ h1 {
   font-size: var(--font-size-h1);
   font-weight: 700;
   color: var(--color-text-white);
+  line-height: 40px;
 }
 h2 {
   font-size: var(--font-size-h2);
@@ -108,3 +109,7 @@ footer div {
 .color-text-white { color: var(--color-text-white); }
 
 .bold { font-weight: 700; }
+
+@media screen and (max-width: 768px) {
+  p { font-size: 18px; }
+}
