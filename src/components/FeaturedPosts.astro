@@ -19,7 +19,9 @@ const { mainPost, posts } = Astro.props;
         <img src={ mainPost.cover } alt={ mainPost.title } />
 
         <div class="content">
-          <h5 class="title">{ mainPost.title }</h5>
+          <a href={`posts/${mainPost.slug}`}>
+            <h5 class="title">{ mainPost.title }</h5>
+          </a>
           <p class="date">{ mainPost.date } by <strong>{ mainPost.author }</strong></p>
           <p class="description">{ mainPost.description }</p>
           <Tags tags={ mainPost.tags } />
@@ -108,14 +110,29 @@ const { mainPost, posts } = Astro.props;
 
   @media screen and (max-width: 1024px) {
     .featured-posts {
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-rows: repeat(1, 1fr);
+    }
+    .main {
+      grid-column: 1 / span 3;
+      grid-row: 1;
+    }
+    .posts {
+      grid-column: 4 / span 2;
+      grid-row: 1;
+    }
+  }
+
+  @media screen and (max-width: 845px) {
+    .featured-posts {
       display: flex;
-      flex-direction: column;
-      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
     }
     .main {
       grid-column: 1;
       grid-row: 1;
-      max-width: 500px;
+      max-width: 384px;
       height: fit-content;
     }
     .main .container {

@@ -29,6 +29,36 @@
       "tags": ["Tags A", "Tags B", "Tags C"],
       "cover": "",
       "slug": "dummy-blog"
+    },
+    {
+      "id": 3,
+      "title": "My second blog post",
+      "date": "2021-01-02",
+      "author": "ChatGPT",
+      "slug": "second-post",
+      "description": "This is my second blog post. Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti odio repudiandae architecto incidunt alias laudantium, reprehenderit omnis itaque mollitia vero? Sint dolorem iusto minus nulla sit nemo nisi reprehenderit voluptas!",
+      "tags": ["Tags A", "Tags B", "Tags C"],
+      "cover": ""
+    },
+    {
+      "id": 4,
+      "title": "My third blog post",
+      "date": "2021-01-03",
+      "author": "ChatGPT",
+      "slug": "third-post",
+      "description": "This is my third blog post. Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti odio repudiandae architecto incidunt alias laudantium, reprehenderit omnis itaque mollitia vero? Sint dolorem iusto minus nulla sit nemo nisi reprehenderit voluptas!",
+      "tags": ["Tags A", "Tags B", "Tags C"],
+      "cover": ""
+    },
+    {
+      "id": 5,
+      "title": "My fourth blog post",
+      "date": "2021-01-04",
+      "author": "ChatGPT",
+      "slug": "fourth-post",
+      "description": "This is my fourth blog post. Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti odio repudiandae architecto incidunt alias laudantium, reprehenderit omnis itaque mollitia vero? Sint dolorem iusto minus nulla sit nemo nisi reprehenderit voluptas!",
+      "tags": ["Tags A", "Tags B", "Tags C"],
+      "cover": ""
     }
   ]
 }

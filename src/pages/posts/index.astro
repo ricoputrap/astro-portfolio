@@ -1,26 +1,33 @@
 ---
 import PostItem from '../../components/PostItem.astro';
-import BlogLayout from '../../layouts/BlogLayout.astro';
+import ShowcaseLayout from '../../layouts/ShowcaseLayout.astro';
 import Layout from '../../layouts/Layout.astro';
-import { posts } from './data';
+import { posts } from "../../data/posts.json";
+import FeaturedPosts from '../../components/FeaturedPosts.astro';
+import type { Post } from '../../types/index.types';
+
+const featuredMainPost: Post = posts[0];
+const featuredPosts: Post[] = posts.slice(1, 3);
+const remainingPosts: Post[] = posts.slice(3);
 ---
 
 <Layout title="ricoputra - POSTS">
-	<BlogLayout>
-		<h2>POSTS</h2>
+	<ShowcaseLayout title="Posts">
+		<FeaturedPosts mainPost={featuredMainPost} posts={featuredPosts} />
 
-		<!-- <div class="posts">
-			{posts.map(post => (
+		<div class="posts">
+			{remainingPosts.map(post => (
 				<PostItem
 					title={ post.title }
 					date={ post.date }
 					author={ post.author }
-					slug={ post.slug }
 					description={ post.description }
+					tags={ post.tags }
+					slug={ post.slug }
 				/>
 			))}
-		</div> -->
-	</BlogLayout>
+		</div>
+	</ShowcaseLayout>
 </Layout>
 
 <style>
@@ -29,8 +36,14 @@ h2 {
 }
 .posts {
 	display: flex;
-	flex-direction: column;
-	row-gap: 32px;
-	margin-top: 40px;
+	flex-wrap: wrap;
+	gap: 20px;
+	margin-top: 20px;
+}
+
+@media screen and (max-width: 1024px) {
+	.posts {
+		justify-content: center;
+	}
 }
 </style>
