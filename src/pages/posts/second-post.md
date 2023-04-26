@@ -3,6 +3,7 @@ layout: "../../layouts/PostLayout.astro"
 title: My second blog post
 date: 2021-11-02
 author: ChatGPT
+cover:
 ---
 
 Hello readers!

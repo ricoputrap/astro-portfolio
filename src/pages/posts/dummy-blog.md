@@ -3,6 +3,7 @@ layout: "../../layouts/PostLayout.astro"
 title: A Dummy Blog Post for Development Purposes
 date: 2021-11-04
 author: ChatGPT
+cover: ../cover/posts/dummy-blog.svg
 ---
 
 Hello readers!
