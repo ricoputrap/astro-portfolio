@@ -1,8 +1,13 @@
 ---
+import { getCollection } from "astro:content";
 import HomeSection from "../../layouts/HomeSection.astro";
 import FeaturedPosts from "../FeaturedPosts.astro";
-import { posts } from "../../data/posts.json"
 import type { Post } from "../../types/index.types";
+import { getPosts } from "../../utils/data";
+
+
+const allPosts = await getCollection('posts');
+const posts = getPosts(allPosts);
 
 const mainPost: Post = posts[0];
 const secondaryPosts: Post[] = posts.slice(1, 3);
