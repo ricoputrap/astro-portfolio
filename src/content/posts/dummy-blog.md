@@ -1,8 +1,11 @@
 ---
 layout: "../../layouts/PostLayout.astro"
 title: A Dummy Blog Post for Development Purposes
-date: 2021-11-04
+date: "2023-04-27"
 author: ChatGPT
+description: This blog post is a sample with dummy content, created for testing and developing the website. Learn why using filler text is important during website development.
+tags: ["Tags A", "Tags B", "Tags C"]
+slug: dummy-blog
 cover: ../cover/posts/dummy-blog.svg
 ---
 

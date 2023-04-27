@@ -7,7 +7,7 @@ export interface Project {
 }
 
 export interface Post {
-  id: number;
+  id: string;
   title: string;
   date: string;
   author: string;

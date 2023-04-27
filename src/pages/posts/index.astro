@@ -1,10 +1,23 @@
 ---
+import { getCollection } from 'astro:content';
 import PostItem from '../../components/PostItem.astro';
 import ShowcaseLayout from '../../layouts/ShowcaseLayout.astro';
 import Layout from '../../layouts/Layout.astro';
-import { posts } from "../../data/posts.json";
 import FeaturedPosts from '../../components/FeaturedPosts.astro';
 import type { Post } from '../../types/index.types';
+import { formatDate } from '../../utils/date';
+
+const allPosts = await getCollection("posts");
+const posts = allPosts.map(post => ({
+	id: post.id,
+	slug: post.slug,
+	...post.data,
+	date: formatDate(post.data.date.toString())
+}));
+
+posts.sort(function(a,b) {
+  return new Date(b.date).getTime() - new Date(a.date).getTime();
+});
 
 const featuredMainPost: Post = posts[0];
 const featuredPosts: Post[] = posts.slice(1, 3);

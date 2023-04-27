@@ -1,9 +1,12 @@
 ---
 layout: "../../layouts/PostLayout.astro"
 title: My second blog post
-date: 2021-11-02
+date: "2023-01-01"
 author: ChatGPT
-cover:
+cover: ""
+description: This is my second blog post. Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti odio repudiandae architecto incidunt alias laudantium, reprehenderit omnis itaque mollitia vero? Sint dolorem iusto minus nulla sit nemo nisi reprehenderit voluptas!
+tags: ["Tags A", "Tags B", "Tags C"]
+slug: second-post
 ---
 
 Hello readers!
