@@ -8,7 +8,8 @@ import type { Post } from '../../types/index.types';
 import { formatDate } from '../../utils/date';
 
 const allPosts = await getCollection("posts");
-const posts = allPosts.map(post => ({
+const nonDraftPosts = allPosts.filter(post => !post.data.draft);
+const posts = nonDraftPosts.map(post => ({
 	id: post.id,
 	slug: post.slug,
 	...post.data,

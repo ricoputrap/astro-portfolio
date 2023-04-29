@@ -1,7 +1,8 @@
 import { formatDate } from "./date";
 
 export const getPosts = (data: any[]) => {
-  const posts = data.map(post => ({
+  const nonDraftPosts = data.filter(post => !post.data.draft);
+  const posts = nonDraftPosts.map(post => ({
     id: post.id,
     slug: post.slug,
     ...post.data,
