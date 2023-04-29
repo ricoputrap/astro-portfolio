@@ -19,14 +19,14 @@ Before we begin, make sure you have Astro installed on your machine. You can ins
 npm install -g astro
 ```
 
-### Importing the `<Image />` Component
+## Importing the `<Image />` Component
 To use the `<Image />` component, we first need to import it in our Astro project. Open the file where you want to use the component and add the following line at the top:
 
 ```javascript
 import Image from 'astro/components/Image';
 ```
 
-#### Using the `<Image />` Component
+## Using the `<Image />` Component
 Now that we have imported the `<Image />` component, let's use it to display an optimized image on our page. Here's an example:
 
 ```javascript
@@ -38,7 +38,7 @@ Now that we have imported the `<Image />` component, let's use it to display an 
 
 In the above code, we provide the src prop with the path to the image file and the alt prop with a descriptive alternative text for the image. Astro will automatically optimize the image based on the provided path and generate optimized versions for different screen sizes.
 
-### Specifying Image Sizes
+## Specifying Image Sizes
 By default, the `<Image />` component will display the image at its original size. However, you can also specify the desired width and height for the image. Here's an example:
 
 ```javascript

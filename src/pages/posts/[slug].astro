@@ -13,14 +13,20 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await post.render();
 ---
-<Content />
+<div class="content">
+  <Content />
+</div>
 
 <style is:inline>
   h2 { font-size: 28px; }
-  h3, h4, h5 { font-size: 24px; }
+  h3 { font-size: 24px; }
+  h2, h3 {
+    margin-top: 40px;
+  }
 
   pre {
-    background-color: #010101 !important;
+    background-color: #252525 !important;
+    color: #FFF;
     border-radius: 10px;
     padding: 20px;
     font-size: 18px;
@@ -28,7 +34,22 @@ const { Content } = await post.render();
   }
 
   p code {
-    background-color: #010101;
-    color: #C9D1D9;
+    background-color: rgba(135,131,120,0.15);
+    color: #EB5757 !important;
+    padding: 4px;
+    border-radius: 5px;
+  }
+
+  @media screen and (max-width: 425px) {
+    h2 { font-size: 24px; }
+    h3 { font-size: 20px; }
+    p {
+      font-size: 14px;
+      line-height: 28px;
+    }
+
+    pre {
+      font-size: 14px;
+    }
   }
 </style>
