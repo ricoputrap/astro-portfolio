@@ -6,7 +6,7 @@ author: ChatGPT
 description: This blog post is a sample with dummy content, created for testing and developing the website. Learn why using filler text is important during website development.
 tags: ["Tags A", "Tags B", "Tags C"]
 slug: dummy-blog
-cover: ../cover/posts/dummy-blog.svg
+cover: /cover/posts/dummy-blog.svg
 ---
 
 Hello readers!

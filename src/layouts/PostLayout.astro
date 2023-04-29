@@ -1,5 +1,5 @@
 ---
-import { Image } from "@astrojs/image/components";
+import { Picture } from "@astrojs/image/components";
 
 import { formatDate } from "../utils/date";
 import BlogLayout from "./BlogLayout.astro";
@@ -14,12 +14,21 @@ const formattedDate = formatDate(date);
   <BlogLayout>
     <div class="post-header">
       {!!cover && (
-        <Image
+        <Picture
           src={ cover }
           alt="post-cover"
-          height={384}
-          width={768}
-          fit="cover"
+          widths={[232, 287, 337, 392, 432, 552, 680, 736]}
+          sizes={`
+            ((min-width: 820px) and (max-width: 767px)) 736px,
+            ((min-width: 768px) and (max-width: 639px)) 680px,
+            ((min-width: 640px) and (max-width: 519px)) 552px,
+            ((min-width: 520px) and (max-width: 479px)) 432px,
+            ((min-width: 480px) and (max-width: 424px)) 392px,
+            ((min-width: 425px) and (max-width: 374px)) 337px,
+            ((min-width: 375px) and (max-width: 231px)) 287px,
+            232px
+          `}
+          aspectRatio="16:9"
           format="svg"
         />
       )}
