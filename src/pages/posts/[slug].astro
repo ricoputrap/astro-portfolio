@@ -14,3 +14,21 @@ const { post } = Astro.props;
 const { Content } = await post.render();
 ---
 <Content />
+
+<style is:inline>
+  h2 { font-size: 28px; }
+  h3, h4, h5 { font-size: 24px; }
+
+  pre {
+    background-color: #010101 !important;
+    border-radius: 10px;
+    padding: 20px;
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  p code {
+    background-color: #010101;
+    color: #C9D1D9;
+  }
+</style>
