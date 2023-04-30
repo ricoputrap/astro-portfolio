@@ -2,8 +2,12 @@
 import { getCollection } from "astro:content";
 import DocItem from "./DocItem.astro";
 
+interface Props {
+  showAll?: boolean;
+}
+const { showAll } = Astro.props;
 const allDocs = await getCollection("docs");
-const docs = allDocs.slice(0, 3);
+const docs = showAll ? allDocs : allDocs.slice(0, 3);
 ---
 
 <div class="tech-docs">
