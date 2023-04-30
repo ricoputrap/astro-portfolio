@@ -5,7 +5,7 @@ import "@fontsource/poppins"
 import "@fontsource/poppins/700.css"
 import "../styles/global.css";
 import Navbar from "../components/Navbar"
-// import NavBar from "../components/NavBar";
+
 export interface Props {
 	title: string;
 }
@@ -20,6 +20,7 @@ const { title } = Astro.props;
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content="Welcome to the personal website of Rico Putra, a talented fullstack web developer with 3 years of experience. With expertise in React and TypeScript, Rico brings a dynamic skill set and a passion for creating exceptional web experiences. Discover Rico's portfolio of innovative projects, showcasing his proficiency in both front-end and back-end development. Join him on his digital journey as he combines creativity and technical prowess to build cutting-edge web solutions." />
 		<title>{title}</title>
 	</head>
 	<body>
