@@ -1,0 +1,46 @@
+---
+import Card from "../Card.astro";
+import Tags from "../Tags.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  tags: string[];
+  slug: string;
+}
+
+const { title, description, tags, slug } = Astro.props;
+---
+<div class="doc">
+  <Card>
+    <div class="content">
+      <a href={`docs/${slug}`}>
+        <h5 class="title">{ title }</h5>
+      </a>
+      <p class="description">{ description }</p>
+      <Tags tags={ tags } />
+    </div>
+  </Card>
+</div>
+
+<style>
+  .content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+  }
+
+  .title {
+    font-size: 20px;
+    color: var(--color-text-brand);
+    margin: 0;
+  }
+  .description {
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 400;
+    color: var(--color-text-primary);
+    margin: 0;
+  }
+</style>

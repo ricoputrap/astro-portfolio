@@ -1,0 +1,48 @@
+---
+import { getCollection } from "astro:content";
+import DocItem from "./DocItem.astro";
+
+const allDocs = await getCollection("docs");
+const docs = allDocs.slice(0, 3);
+---
+
+<div class="tech-docs">
+  <div class="container">
+    {docs.map(doc => (
+      <div class="item">
+        <DocItem
+          title={doc.data.title}
+          description={doc.data.description}
+          tags={doc.data.tags}
+          slug={doc.slug}
+        />
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .item {
+    min-width: 300px;
+    flex-basis: calc((100% - 40px) / 3);
+    box-sizing: border-box;
+  }
+
+  @media screen and (max-width: 1023px) {
+    .item {
+      min-width: unset;
+      flex-basis: calc((100% - 20px) / 2);
+    }
+  }
+  @media screen and (max-width: 560px) {
+    .item {
+      flex-basis: 100%;
+    }
+  }
+</style>
