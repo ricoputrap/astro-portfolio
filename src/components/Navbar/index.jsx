@@ -18,28 +18,36 @@ const NavBar = () => {
   }, [isOpen]);
 
   const navMenuClasses = useMemo(() => {
-    if (isOpen) return "navMenu active";
-    return "navMenu";
+    if (isOpen) return "nav-menu active";
+    return "nav-menu";
   }, [isOpen]);
+  const navToggleClasses = useMemo(() => {
+    if (isOpen) return "nav-toggle active";
+    return "nav-toggle";
+  }, [isOpen]);
+
 
   return (
     <nav>
-      <div className="navMobile">
+      <div className="nav-mobile">
         <h3 id="logo" className="logo">
           <a href="/">ricoputra</a>
         </h3>
 
-        <div className="navToggle" onClick={ toggle }>
-          <img
-            src={ toggleIcon }
-            alt="nav-toggle"
-          />
+        <div className={ navToggleClasses } onClick={ toggle }>
+          <div className="nav-toggle-content">
+            <img
+              src={ toggleIcon }
+              alt="nav-toggle"
+              className="nav-toggle-icon"
+            />
+          </div>
         </div>
       </div>
 
       <div className={ navMenuClasses }>
         {routes.map((route) => (
-          <a key={ route.link } className="navMenu-item" href={ route.link }>
+          <a key={ route.link } className="nav-menu-item" href={ route.link }>
             { route.label }
           </a>
         ))}

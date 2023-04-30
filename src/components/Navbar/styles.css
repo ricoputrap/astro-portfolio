@@ -18,16 +18,16 @@ nav a {
   color: var(--color-text-white);
 }
 
-.navMenu {
+.nav-menu {
   display: flex;
   column-gap: 52px;
   font-weight: 7000;
 }
-.navMenu a {
+.nav-menu a {
   font-weight: 700;
 }
 
-.navToggle {
+.nav-toggle {
   display: none;
 }
 
@@ -49,33 +49,46 @@ nav a {
     font-size: var(--font-size-h4);
   }
 
-  .navMobile {
+  .nav-mobile {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
   }
-  .navToggle {
-    display: flex;
+
+  /* NAV TOGGLE */
+  .nav-toggle {
+    display: block;
     padding: 4px;
     border: 2px solid var(--color-background-white);
     border-radius: 5px;
     transition: all 0.4s ease-out;
   }
-  .navToggle:hover {
+  .nav-toggle:hover {
     cursor: pointer;
     background-color: var(--color-background-secondary);
     box-shadow: 0 0 10px 2px var(--color-background-white);
-    transition: all 0.2s ease-in;
   }
-  .navToggle img {
+  .nav-toggle-content {
+    display: flex;
+    z-index: 100;
+  }
+  img.nav-toggle-icon {
     width: 32px;
     height: 32px;
   }
-  .navMenu {
+  .nav-toggle.active img.nav-toggle-icon {
+    transition: all 0.2s ease-in;
+  }
+  .nav-toggle.active img.nav-toggle-icon:hover {
+    transform: rotateZ(90deg);
+  }
+
+  /* NAV MENU */
+  .nav-menu {
     display: none;
   }
-  .navMenu.active {
+  .nav-menu.active {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -84,14 +97,14 @@ nav a {
     border-bottom: 1px solid var(--color-background-white);
     transition: all 1s ease-in;
   }
-  .navMenu-item {
+  .nav-menu-item {
     height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
   }
-  .navMenu-item:hover {
+  .nav-menu-item:hover {
     background-color: var(--color-background-primary);
     color: var(--color-text-black);
   }
