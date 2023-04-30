@@ -4,7 +4,8 @@ import "@fontsource/nunito/700.css"
 import "@fontsource/poppins"
 import "@fontsource/poppins/700.css"
 import "../styles/global.css";
-import Navbar from "../components/Navbar.astro";
+import Navbar from "../components/Navbar"
+// import NavBar from "../components/NavBar";
 export interface Props {
 	title: string;
 }
@@ -23,8 +24,9 @@ const { title } = Astro.props;
 	</head>
 	<body>
 		<header>
-			<Navbar />
+			<Navbar client:visible />
 		</header>
+		
 		<main>
 			<slot />
 		</main>
