@@ -15,7 +15,7 @@ npm init vite@latest chart-js-bar-chart --template react-ts
 
 This command initializes a new Vite project with React and TypeScript template.
 
-## 2. Install Chart JS and its types
+### 2. Install Chart JS and its types
 Navigate to the project directory:
 
 ```bash

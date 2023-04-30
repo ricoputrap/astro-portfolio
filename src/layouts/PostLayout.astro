@@ -7,7 +7,9 @@ import Layout from "./Layout.astro";
 
 const { frontmatter } = Astro.props;
 const { title, date, author, cover } = frontmatter;
-const formattedDate = formatDate(date);
+const formattedDate = date ? formatDate(date) : "";
+
+const showDate = !!formattedDate && !!author;
 ---
 
 <Layout title={ frontmatter.title }>
@@ -34,9 +36,11 @@ const formattedDate = formatDate(date);
       )}
       
       <h4 class="color-text-brand">{ title }</h4>
-      <div class="color-text-secondary">
-        <small>{ formattedDate } by { author }</small>
-      </div>
+      {showDate && (
+        <div class="color-text-secondary">
+          <small>{ formattedDate } by { author }</small>
+        </div>
+      )}
     </div>
 
     <div class="content">
@@ -59,9 +63,42 @@ const formattedDate = formatDate(date);
   .post-header img {
     width: 100%;
     max-width: 768px;
+    max-height: 400px;
+    margin-bottom: 20px;
+    object-fit: cover;
+  }
+
+  .content h2 { font-size: 24px; }
+  .content h3 { font-size: 20px; }
+  .content h2, h3 { margin-top: 40px; }
+  .content pre {
+    background-color: #252525 !important;
+    color: #FFF;
+    border-radius: 10px;
+    padding: 20px;
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .content p code {
+    background-color: rgba(135,131,120,0.15);
+    color: #EB5757 !important;
+    padding: 4px;
+    border-radius: 5px;
   }
 
   @media screen and (max-width: 425px) {
+    .content h2 { font-size: 20px; }
+    .content h3 { font-size: 16px; }
+    .content p {
+      font-size: 14px;
+      line-height: 28px;
+    }
+
+    .content pre {
+      font-size: 14px;
+    }
+
     .color-text-brand {
       font-size: 24px;
     }
