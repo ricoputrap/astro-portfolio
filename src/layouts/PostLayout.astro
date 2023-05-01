@@ -85,6 +85,27 @@ const showDate = !!formattedDate && !!author;
     color: #EB5757 !important;
     padding: 4px;
     border-radius: 5px;
+    word-break: break-word;
+  }
+
+  .content a {
+    color: #2383e2;
+    font-size: 18px;
+  }
+
+  .content blockquote {
+    border-left: 2px solid var(--color-text-primary);
+    margin-left: 0;
+    padding-left: 12px;
+  }
+  .content blockquote p {
+    font-size: 16px;
+    font-style: italic;
+    color: var(--color-text-secondary);
+  }
+
+  .content img {
+    max-width: 100%;
   }
 
   @media screen and (max-width: 425px) {
