@@ -111,7 +111,7 @@ footer div {
 .bold { font-weight: 700; }
 
 @media screen and (max-width: 768px) {
-  p { font-size: 18px; }
+  p, ol { font-size: 18px; }
 }
 
 @media screen and (max-width: 425px) {
