@@ -1,7 +1,7 @@
 ---
 layout: "../../layouts/PostLayout.astro"
 title: Deploying a Static Website on a Cloud Server using Docker & Caddy
-description: Representing the frequency or distribution of a set of discrete data points in different categories.
+description: Discover the process of configuring a web server using Docker and Caddy, empowering you to deploy your static website on a cloud server with ease and efficiency.
 tags: ["Server", "Docker", Caddy]
 slug: deploy-static-web-using-docker-caddy
 ---

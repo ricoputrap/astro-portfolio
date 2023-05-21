@@ -1,7 +1,7 @@
 ---
 layout: "../../layouts/PostLayout.astro"
 title: Configuring a Domain to your Dockerized Caddy Web Server
-description: Representing the frequency or distribution of a set of discrete data points in different categories.
+description: Learn the step-by-step process of configuring a domain to your Dockerized Caddy web server, ensuring your website is accessible through a custom domain name and leveraging the power of containerization for efficient web hosting.
 tags: ["Server", "Docker", "Caddy", "DNS"]
 slug: configure-domain-to-dockerized-caddy-web-server
 ---
