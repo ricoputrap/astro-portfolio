@@ -10,11 +10,13 @@ interface Props {
 }
 
 const { title, description, tags, slug } = Astro.props;
+const HOST = import.meta.env.HOST;
+const URL = `${HOST}/docs/${slug}`;
 ---
 <div class="doc">
   <Card>
     <div class="content">
-      <a href={`/docs/${slug}`}>
+      <a href={ URL }>
         <h5 class="title">{ title }</h5>
       </a>
       <p class="description">{ description }</p>
