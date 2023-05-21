@@ -19,7 +19,7 @@ const { mainPost, posts } = Astro.props;
         <img src={ mainPost.cover } alt={ mainPost.title } />
 
         <div class="content">
-          <a href={`posts/${mainPost.slug}`}>
+          <a href={`/posts/${mainPost.slug}`}>
             <h5 class="title">{ mainPost.title }</h5>
           </a>
           <p class="date">{ mainPost.date } by <strong>{ mainPost.author }</strong></p>
@@ -37,7 +37,7 @@ const { mainPost, posts } = Astro.props;
       author={ posts[0].author }
       description={ posts[0].description }
       tags={ posts[0].tags }
-      slug={`posts/${posts[0].slug}`}
+      slug={`/posts/${posts[0].slug}`}
     />
     <PostItem
       title={ posts[1].title }
@@ -45,7 +45,7 @@ const { mainPost, posts } = Astro.props;
       author={ posts[1].author }
       description={ posts[1].description }
       tags={ posts[1].tags }
-      slug={`posts/${posts[1].slug}`}
+      slug={`/posts/${posts[1].slug}`}
     />
   </div>
 </div>
