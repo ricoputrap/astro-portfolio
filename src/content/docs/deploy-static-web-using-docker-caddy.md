@@ -6,30 +6,39 @@ tags: ["Server", "Docker", Caddy]
 slug: deploy-static-web-using-docker-caddy
 ---
 
-When creating a simple static website with only HTML and CSS files on our computer, we can view the website in a browser by **copying and pasting** the HTML file's address (usually `index.html`) into the URL bar. We can also **drag and drop** the HTML file into the browser, which allows us to immediately see the website's content.
+## Introduction
+When creating a simple static website consisting of HTML and CSS files on our computer, we can view it in a browser by copying the file's address or dragging and dropping the file (typically it is an `index.html`). However, if we want others to access our website on their own devices, we need to take additional steps. One such step is deploying our website on a cloud server. We can use Docker and Caddy for that.
 
-However, if we want others to be able to view our website on their laptops or smartphones, they cannot simply perform the same actions of **copying and pasting** the HTML file's address or **dragging and dropping** the file into the browser. Instead, people typically enter the website's URL/domain in the browser's URL bar. This is because others do not have access to our HTML and CSS files directly. These files are stored on a server.
+Caddy is a lightweight web server that simplifies the process of serving websites securely. It supports automatic HTTPS, easy configuration with the Caddyfile, and integrates well with Docker. With Caddy, you can easily set up TLS certificates and manage website routing and file serving.
 
-To make our website accessible to others on their devices, we need to prepare a few things. In this tutorial, I will explain the steps required to make our website accessible to everyone through their own browser on their respective devices.
+## Tutorial
+In this tutorial, we will walk through the steps to deploy your static website on a cloud server using Docker and Caddy. Let's get started!
 
-1. SSH to your cloud server by executing one of the following commands in the terminal:
+1. **SSH to the Cloud Server**
    
+   To begin, SSH into your cloud server using either the IP address or domain name. If the domain is not yet configured, you can use the IP address temporarily. For example:
+
    ```bash
-   # using an IP address
    ssh <username>@<public IP address>
-   
-   # using a domain
-   ssh <username>@<your.domain.com>
    ```
+
+   Replace `<username>` with your actual username for the cloud server and `<public IP address>` with the server's public IP address. For example:
+
+   ```bash
+   ssh john@203.0.113.10
+   ```
+
+   This command establishes a secure shell (SSH) connection to your cloud server, allowing you to execute commands remotely.
+
+
+2. **Install Docker**
    
-   If your domain is not yet configured to the public IP address of your server, you won't be able to SSH using your domain. In such cases, you can SSH using the public IP address. For example, if your public IP address is `172.217.22.1`, and your username on the server is `john`, the SSH command will be `ssh john@172.217.22.1`. Later, when your domain (e.g., `yourdomain.com`) is configured to point to your server's public IP address, you can SSH using your domain: `ssh john@yourdomain.com`.
-
-2. If Docker is not already installed on your cloud server, you need to install it by following the tutorial in this article: [*Install Docker Engine on Ubuntu*](https://docs.docker.com/engine/install/ubuntu/)
+   If Docker is not already installed on your cloud server, you need to install it by following the tutorial in this article: [*Install Docker Engine on Ubuntu*](https://docs.docker.com/engine/install/ubuntu/)
 
 
-3. Install `Caddy` using Docker by adjusting the `docker-compose.yml` file as shown below:
-   - Change `<version>` to the desired version of Caddy, for example `caddy:latest`.
-   - Update the value of `$PWD` with the relative path of the `Caddyfile` and `site` directory on your server from the root directory where the `docker-compose.yml` file exists. If these files are in the same directory as `docker-compose.yml`, the value of `$PWD` will be `./`. Therefore, the complete path for the two volumes will be `./Caddyfile` and `./site`.
+3. **Install Caddy using Docker**
+   
+   Configure the `docker-compose.yml` file to install Caddy using Docker. Specify the desired version of Caddy and define the volumes and ports. Here is an example configuration:
    
    ```yaml
    version: "3.7"
@@ -53,24 +62,26 @@ To make our website accessible to others on their devices, we need to prepare a 
      caddy_config:
    ```
 
-4. If a file named `Caddyfile` (without any file extension) doesn't exist on your server, create it in the same directory as the `docker-compose.yml` file by running the following command in your SSH terminal: `touch Caddyfile`.
+
+4. **Configure the Caddyfile**
    
-   Then, update the content of the `Caddyfile` using a text editor like Vim by running this command in your SSH terminal: `vi Caddyfile`. Below is the minimal configuration to serve a static website:
-   
+   Create a `Caddyfile` in the same directory as the `docker-compose.yml` file. Use a text editor to define the configuration for serving the static website. Run `touch Caddyfile` to create a new file and run `vi Caddyfile` to write configuration in the file. Here is a minimal configuration example:
+   ```
+   yourdomain.com {
+    root * /path/to/your/website
+    file_server
+   }
+   ```
    - **`yourdomain.com`**: This is the hostname or domain name for which you're configuring the server block. Replace it with your actual domain.
    - **`root * /path/to/your/website`**: This directive sets the root directory where your website's files are located. Replace **`/path/to/your/website`** with the actual path to your website's files within the Caddy Docker container.
    - **`file_server`**: This directive enables Caddy's built-in file server, allowing it to serve the static files present in the specified root directory.
-   
-   ```
-   yourdomain.com {
-       root * /path/to/your/website
-       file_server
-   }
-   ```
 
-5. Adjust the content of the `Caddyfile` above to match your configuration in `docker-compose.yml`:
-   - Based on the default configuration in the `docker-compose.yml` above, the root directory for your website files is `/srv` within the Caddy Docker container. Replace `/path/to/your/website` with `/srv`.
-   - If your domain name is `google.com`, replace `[yourdomain.com](http://yourdomain.com)` with `google.com`.
+
+5. **Adjust the content of `Caddyfile`**
+   
+   Based on the default configuration in the `docker-compose.yml` above, the root directory for your website files is `/srv` within the Caddy Docker container. Replace `/path/to/your/website` with `/srv`.
+   
+   If your domain name is `google.com`, replace `[yourdomain.com](http://yourdomain.com)` with `google.com`.
    
    Here is the revised version of the `Caddyfile`:
    
@@ -81,8 +92,27 @@ To make our website accessible to others on their devices, we need to prepare a 
    }
    ```
 
-6. Finally, store the static files of your website in a directory on the server, which will later be mounted to the `/srv` directory within the Caddy Docker container. Based on the `docker-compose.yml` file above, the directory for your website files is `./site`.
+
+6. **Store Website Files**
    
-   The minimum requirement for a static website is an `index.html` file. You can also store other supporting files such as CSS, JavaScript, or images in the `./site` directory.
+   Store the static files of your website in a directory on the server, which will later be mounted to the `/srv` directory within the Caddy Docker container. Based on the `docker-compose.yml` file above, the directory for your website files is `./site`.
    
-   If you're working with a React application, you can run npm run build on your local machine and upload the resulting files (usually stored in the ./dist or ./build directory) to the ./site directory on your server.
+   Typically, the minimum requirement is an `index.html` file. You can also include additional supporting files such as CSS, JavaScript, or images.
+
+   If you're working with a React application, run `npm run build` on your local machine and upload the resulting files to the server directory.
+
+
+7. **Run Docker Compose**
+   
+   Run the Docker Compose command to start the Caddy server and deploy your static website. In your SSH terminal, navigate to the directory where your `docker-compose.yml` file is located. Then, execute the following command:
+   ```
+   docker-compose up -d
+   ```
+
+   This command will start the Caddy server in detached mode (-d flag), allowing it to run in the background. It will use the configuration specified in the docker-compose.yml file to create and manage the Caddy container.
+
+   If everything is set up correctly, you should see the Caddy container start up and the static website files being served. You can verify this by accessing your domain in a web browser. The website should now be accessible to everyone through their web browsers.
+
+
+### Conclusion
+By following the steps outlined in this tutorial, you can successfully deploy a static website on a cloud server using Docker and Caddy. Ensure that your domain is properly configured, and your website will be accessible to users through their browsers.
