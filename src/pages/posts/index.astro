@@ -37,7 +37,7 @@ const remainingPosts: Post[] = posts.slice(3);
 					author={ post.author }
 					description={ post.description }
 					tags={ post.tags }
-					slug={ post.slug }
+					slug={`/posts/${post.slug}`}
 				/>
 			))}
 		</div>

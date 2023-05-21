@@ -17,7 +17,8 @@ const { title, date, author, description, tags, slug } = Astro.props;
 <div class="post">
   <Card>
     <div class="content">
-      <a href={`posts/${slug}`}>
+      <!-- <a href={`posts/${slug}`}> -->
+      <a href={ slug }>
         <h5 class="title">{ title }</h5>
       </a>
       <p class="date">{ date } by <strong>{ author }</strong></p>
