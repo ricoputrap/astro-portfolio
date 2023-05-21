@@ -10,6 +10,11 @@ interface Props {
 }
 
 const { mainPost, posts } = Astro.props;
+const HOST = import.meta.env.HOST;
+
+const MAIN_POST_URL = `${HOST}/posts/${mainPost.slug}`;
+const SECOND_POST_URL = `${HOST}/posts/${posts[0].slug}`;
+const THIRD_POST_URL = `${HOST}/posts/${posts[1].slug}`;
 ---
 
 <div class="featured-posts">
@@ -19,7 +24,7 @@ const { mainPost, posts } = Astro.props;
         <img src={ mainPost.cover } alt={ mainPost.title } />
 
         <div class="content">
-          <a href={`/posts/${mainPost.slug}`}>
+          <a href={ MAIN_POST_URL }>
             <h5 class="title">{ mainPost.title }</h5>
           </a>
           <p class="date">{ mainPost.date } by <strong>{ mainPost.author }</strong></p>
@@ -37,7 +42,7 @@ const { mainPost, posts } = Astro.props;
       author={ posts[0].author }
       description={ posts[0].description }
       tags={ posts[0].tags }
-      slug={`/posts/${posts[0].slug}`}
+      slug={ SECOND_POST_URL }
     />
     <PostItem
       title={ posts[1].title }
@@ -45,7 +50,7 @@ const { mainPost, posts } = Astro.props;
       author={ posts[1].author }
       description={ posts[1].description }
       tags={ posts[1].tags }
-      slug={`/posts/${posts[1].slug}`}
+      slug={ THIRD_POST_URL }
     />
   </div>
 </div>
