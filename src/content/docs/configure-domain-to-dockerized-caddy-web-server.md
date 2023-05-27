@@ -17,12 +17,15 @@ Actually, the main steps will be explained in the first section: **A. DNS Config
 ### A. DNS Configuration
 
 1. **Purchase a Domain**
+   
    Start by purchasing a domain from a domain registrar of your choice. For example, let's use the domain `learncoding.com`.
 
 2. **Access DNS Management**
+   
    Log in to your domain registrar's website and navigate to the DNS management section for the `learncoding.com` domain.
 
 3. **Create a DNS Record**
+   
    Add a new DNS record with the following details
    - Name: `@` → represents the root domain or the domain itself (not a subdomain)
    - Type: `A` → a type of DNS record used to map a domain name to an IPv4 address
